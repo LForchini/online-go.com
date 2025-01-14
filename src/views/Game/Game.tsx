@@ -1500,13 +1500,8 @@ export function Game(): JSX.Element | null {
                         player_cache.update(game.players.black, true);
                         black_username.current = game.players.black.username;
                     }
-                    if (
-                        white_username.current &&
-                        black_username.current &&
-                        !preferences.get("dynamic-title")
-                    ) {
-                        on_refocus_title.current =
-                            black_username.current + " vs " + white_username.current;
+                    if (!preferences.get("dynamic-title")) {
+                        on_refocus_title.current = game.name;
                         window.document.title = on_refocus_title.current;
                     }
                     game_control.creator_id = game.creator;
